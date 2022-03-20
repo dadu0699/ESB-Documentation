@@ -198,7 +198,7 @@ ERROR:
 ```json
 {
   "status": 400,
-  "msg": "Error al ob el usuario.",
+  "msg": "Error al obtener el usuario.",
   "data": []
 }
 ```
@@ -212,7 +212,6 @@ OK:
   "data": [{
     "name": "string",
     "lastname": "string",
-    "password": "string",
     "email": "string",
     "phone": "string",
     "photo": "string",
@@ -585,8 +584,10 @@ OK:
 - Puerto: `5002`
 - Ruta específica: `/match/<<prefijo>>`
 - Estados (campo state):
-  - Iniciado = 1
-  - Finalizado = 2
+  - Sin iniciar: 1
+  - Iniciado = 2
+  - Finalizado = 3
+  - Suspendido = 4
 
 ### Crear
 
@@ -1153,7 +1154,7 @@ OK:
 
 ### Ver o listar
 
-Endpoint que permite ver o listar los directores tecnicos, es necesario enviar el query params si se desea ver un director tecnico específico de lo contrario no es necesario.
+Endpoint que permite ver o listar los directores técnicos, es necesario enviar el query params si se desea ver un director técnico específico de lo contrario no es necesario.
 
 - Metodo: `GET`
 - Query Params: `?id=number`
@@ -1293,14 +1294,14 @@ EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
 
 ```json
 {
-    "name": "string",
-    "lastname": "string",
-    "birth_date": "string",
-    "nationality": number,
-    "position": number,
-    "status": "string",  // Pendiente de definición
-    "id_team": number,
-    "photo": "string base64",
+  "name": "string",
+  "lastname": "string",
+  "birth_date": "string",
+  "nationality": number,
+  "position": number,
+  "status": "string",  // Pendiente de definición
+  "id_team": number,
+  "photo": "string base64",
 }
 ```
 
@@ -1381,14 +1382,14 @@ Endpoint que permite actualizar un jugador, el contenido del campo photo debe se
 ```json
 {
   "id": number,
-    "name": "string",
-    "lastname": "string",
-    "birth_date": "string",
-    "nationality": number,
-    "position": number,
-    "status": "string",  // Pendiente de definición
-    "id_team": number,
-    "photo": "string base64",
+  "name": "string",
+  "lastname": "string",
+  "birth_date": "string",
+  "nationality": number,
+  "position": number,
+  "status": "string",  // Pendiente de definición
+  "id_team": number,
+  "photo": "string base64",
 }
 ```
 
@@ -1459,7 +1460,84 @@ OK:
 
 ### Crear
 
+EndPoint que permite crear un post/noticia, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id_team": number,
+  "id_user": number,
+  "title": "string",
+  "description": "string",
+  "date": "string"
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al crear noticia.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Noticia creada con éxito.",
+  "data": []
+}
+```
+
 ### Ver o listar
+
+Endpoint que permite ver o listar los post/noticias, es necesario enviar el query params `id` si se desea ver una noticia específica de lo contrario no es necesario, es necesario enviar el query params `team` si se desea ver las noticias relacionadas a un equipo de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`, `?team=number`
+- Prefijo: `/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener noticia(s).",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Noticia(s) obtenida(s) con éxito.",
+  "data": [
+    {
+      "id": number,
+      "id_team": number,
+      "team": "string",
+      "id_user": number,
+      "title": "string",
+      "description": "string",
+      "date": "string"
+    },
+    ...
+  ]
+}
+```
 
 ## Arbitro
 
@@ -1638,6 +1716,18 @@ OK:
 
 - Puerto: `5011`
 - Ruta específica: `/administrator/<<prefijo>>`
+- Roles (campo id_rol):
+  - Administrador = 1
+  - Empleado = 2
+  - Cliente = 3
+- Estados (campo id_status):
+  - Activa = 1
+  - Congelada = 2
+  - Eliminada = 3
+- Genero (campo gender):
+  - F
+  - M
+  - U
 
 ### Usuarios Suscritos a X equipo
 
@@ -1663,9 +1753,131 @@ OK:
 
 ### Dar de alta/baja o activar/congelar un usuario
 
+Endpoint para que un administrador actualice el estado de un usuario, la eliminación se simulará por medio de un cambio de estado (Estado 3), `es necesario que se envíe el token`.
+
+- Metodo: `PUT`
+- Prefijo: `/user/status`
+- Entrada
+
+```json
+{
+  "id": number,
+  "id_status": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al actualizar el estado del usuario.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Estado del usuario actualizado con éxito.",
+  "data": []
+}
+```
+
 ### Ver o listar Usuarios
 
+EndPoint que permite ver o listar usuarios , `es necesario que se envíe el token`.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/user/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener usuario(s).",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuario(s) obtenido(s) con éxito.",
+  "data": [
+    {
+      "name": "string",
+      "lastname": "string",
+      "email": "string",
+      "phone": "string",
+      "photo": "string",
+      "gender": "string",
+      "birth_date": "string",
+      "address": "string",
+      "age": number,
+      "id_country": number,
+      "country": "string"
+    },
+    ...
+  ]
+}
+```
+
 ## Actualizar usuario
+
+EndPoint que permite actualizar un usuario, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+
+- Metodo: `PUT`
+- Prefijo: `/user`
+- Entrada
+
+```json
+{
+  "id": number,
+  "name": "string",
+  "lastname": "string",
+  "password": "string",
+  "email": "string",
+  "phone": "string",
+  "photo": "string base64",
+  "gender": "string",
+  "birth_date": "string",
+  "address": "string",
+  "id_country": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al actualizar el usuario.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuario actualizado con éxito.",
+  "data": []
+}
+```
 
 ## Empleado
 
@@ -1676,11 +1888,171 @@ OK:
 
 ### Transferir Jugador
 
+Endpoint para que un empleado transfiera un jugador a otro equipo, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/player-transfer`
+- Entrada
+
+```json
+{
+  "id_player": number,
+  "id_team_origin" : number,
+  "id_team_destination" : number,
+  "start_date": "string",
+  "end_date": "string"
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al transferir jugador.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugador transferido con éxito.",
+  "data": []
+}
+```
+
 ### Log de Transferencia Jugador
+
+Endpoint que permite ver o listar el registro de tranferencias de los jugadores, es necesario enviar el query params si se desea ver el log de transferencias de un jugador específico de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/player-transfer/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener el log de transferencias.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Log de transferencias obtenido con éxito.",
+  "data": [
+    {
+      "id": number,
+      "id_player": number,
+      "player_name": "string",
+      "player_lastname": "string",
+      "id_team_origin" : number,
+      "team_origin": "string",
+      "id_team_destination" : number,
+      "team_destination": "string",
+      "start_date": "string",
+      "end_date": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Transferir Director Técnico
 
+Endpoint para que un empleado transfiera un director técnico a otro equipo, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/technical-director-transfer`
+- Entrada
+
+```json
+{
+  "id_coach": number,
+  "id_team_origin" : number,
+  "id_team_destination" : number,
+  "start_date": "string",
+  "end_date": "string"
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al transferir director técnico.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Director técnico transferido con éxito.",
+  "data": []
+}
+```
+
 ### Log de Transferencia Director Técnico
+
+Endpoint que permite ver o listar el registro de tranferencias de los directores técnicos, es necesario enviar el query params si se desea ver el log de transferencias de un director técnico específico de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/technical-director-transfer/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener el log de transferencias.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Log de transferencias obtenido con éxito.",
+  "data": [
+    {
+      "id": number,
+      "id_coach": number,
+      "coach_name": "string",
+      "coach_lastname": "string",
+      "id_team_origin" : number,
+      "team_origin": "string",
+      "id_team_destination" : number,
+      "team_destination": "string",
+      "start_date": "string",
+      "end_date": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Agregar Incidencia
 
