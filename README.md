@@ -75,9 +75,9 @@ Token
 ```
 
 - id_rol:
-  1. Administrador.
-  2. Empleado.
-  3. Cliente.
+  - Administrador = 1
+  - Empleado = 2
+  - Cliente = 3
 
 **NOTA:** Verificar la coincidencia y la escritura correcta de cada uno de los campos utilizados como entrada o salida.
 
@@ -88,13 +88,13 @@ Token
 - Puerto: `5000`
 - Ruta específica: `/customer/<<prefijo>>`
 - Roles (campo id_rol):
-  1. Administrador.
-  2. Empleado.
-  3. Cliente.
+  - Administrador = 1
+  - Empleado = 2
+  - Cliente = 3
 - Estados (campo id_status):
-  1. Activa.
-  2. Congelada.
-  3. Eliminada.
+  - Activa = 1
+  - Congelada = 2
+  - Eliminada = 3
 - Genero (campo gender):
   - F
   - M
@@ -546,13 +546,13 @@ Endopoint para el inicio de sesion de todos los usuarios, generar token segun es
 - Metodo: `POST`
 - Prefijo: `/`
 - Roles (campo id_rol):
-  1. Administrador.
-  2. Empleado.
-  3. Cliente.
+  - Administrador = 1
+  - Empleado = 2
+  - Cliente = 3
 - Estados (campo id_status):
-  1. Activa.
-  2. Congelada.
-  3. Eliminada.
+  - Activa = 1
+  - Congelada = 2
+  - Eliminada = 3
 - Entrada
 
 ```json
