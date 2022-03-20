@@ -426,11 +426,157 @@ OK:
 
 ### Crear
 
+EndPoint que permite crear un equipo, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "name": "string",
+  "fundation_date": "string",
+  "photo": "string base64",
+  "id_country": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al crear equipo.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Equipo creado con éxito.",
+  "data": []
+}
+```
+
 ### Ver o listar
+
+Endpoint que permite ver o listar los equipos, es necesario enviar el query params si se desea ver un equipo especifico de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/?id`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener equipo(s).",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Equipo(s) obtenido(s) con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "fundation_date": "string",
+      "photo": "string",
+      "id_country": number
+    },
+    ...
+  ]
+}
+```
 
 ### Actualizar
 
+Endpoint que permite actualizar un equipo, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+
+- Metodo: `PUT`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number,
+  "name": "string",
+  "fundation_date": "string",
+  "photo": "string base64",
+  "id_country": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al actualizar equipo.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Equipo actualizado con éxito.",
+  "data": []
+}
+```
+
 ### Eliminar
+
+Endpoint que permite eliminar un equipo, `es necesario que se envíe el token`.
+
+- Metodo: `DELETE`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al eliminar equipo.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Equipo eliminado con éxito.",
+  "data": []
+}
+```
 
 ## Partido
 
@@ -751,3 +897,36 @@ OK:
 - Ruta específica: `/country/<<prefijo>>`
 
 ### Listar paises
+
+Endpoint para listar todos los paises.
+
+- Metodo: `Get`
+- Prefijo: `/`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los paises.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Se han obtenido los paises.",
+  "data": [
+    {
+      "id": number,
+      "name": "string"
+    },
+    ...
+  ]
+}
+```
