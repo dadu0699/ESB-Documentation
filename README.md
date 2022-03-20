@@ -189,7 +189,7 @@ EndPoint que permite visualizar su perfil, `es necesario que se envíe el token`
 
 - Metodo: `GET`
 - Query Params: `?id=number`
-- Prefijo: `/?id`
+- Prefijo: `/<<Query Params>>`
 
 - Salida
 
@@ -469,7 +469,7 @@ Endpoint que permite ver o listar los equipos, es necesario enviar el query para
 
 - Metodo: `GET`
 - Query Params: `?id=number`
-- Prefijo: `/?id`
+- Prefijo: `/<<Query Params>>`
 
 - Salida
 
@@ -584,6 +584,9 @@ OK:
 
 - Puerto: `5002`
 - Ruta específica: `/match/<<prefijo>>`
+- Estados (campo state):
+  - Iniciado = 1
+  - Finalizado = 2
 
 ### Crear
 
@@ -591,9 +594,6 @@ EndPoint que permite crear un partido, `es necesario que se envíe el token`.
 
 - Metodo: `POST`
 - Prefijo: `/`
-- Estados (campo state):
-  - Iniciado = 1
-  - Finalizado = 2
 - Entrada
 
 ```json
@@ -638,10 +638,7 @@ Endpoint que permite ver o listar los partidos, es necesario enviar el query par
 
 - Metodo: `GET`
 - Query Params: `?id=number`
-- Prefijo: `/?id`
-- Estados (campo state):
-  - Iniciado = 1
-  - Finalizado = 2
+- Prefijo: `/<<Query Params>>`
 - Salida
 
 ERROR:
@@ -688,9 +685,6 @@ Endpoint que permite actualizar un partido, el contenido del campo photo debe se
 
 - Metodo: `PUT`
 - Prefijo: `/`
-- Estados (campo state):
-  - Iniciado = 1
-  - Finalizado = 2
 - Entrada
 
 ```json
@@ -772,13 +766,6 @@ OK:
 
 - Puerto: `5003`
 - Ruta específica: `/competition/<<prefijo>>`
-
-### Crear
-
-EndPoint que permite crear una competencia, `es necesario que se envíe el token`.
-
-- Metodo: `POST`
-- Prefijo: `/`
 - Tipo (campo type):
   - Liga = 1
   - Eliminatoria = 2
@@ -786,6 +773,13 @@ EndPoint que permite crear una competencia, `es necesario que se envíe el token
   - Super Copa = 4
   - Cuadrangular = 5
   - Triangular = 6
+
+### Crear
+
+EndPoint que permite crear una competencia, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/`
 - Entrada
 
 ```json
@@ -825,14 +819,7 @@ Endpoint que permite ver o listar las competencias, es necesario enviar el query
 
 - Metodo: `GET`
 - Query Params: `?id=number`
-- Prefijo: `/?id`
-- Tipo (campo type):
-  - Liga = 1
-  - Eliminatoria = 2
-  - Copa = 3
-  - Super Copa = 4
-  - Cuadrangular = 5
-  - Triangular = 6
+- Prefijo: `/<<Query Params>>`
 - Salida
 
 ERROR:
@@ -873,13 +860,6 @@ Endpoint que permite actualizar un partido, el contenido del campo photo debe se
 
 - Metodo: `PUT`
 - Prefijo: `/`
-- Tipo (campo type):
-  - Liga = 1
-  - Eliminatoria = 2
-  - Copa = 3
-  - Super Copa = 4
-  - Cuadrangular = 5
-  - Triangular = 6
 - Entrada
 
 ```json
@@ -1007,7 +987,7 @@ Endpoint que permite ver o listar los estadios, es necesario enviar el query par
 
 - Metodo: `GET`
 - Query Params: `?id=number`
-- Prefijo: `/?id`
+- Prefijo: `/<<Query Params>>`
 
 - Salida
 
@@ -1142,7 +1122,7 @@ EndPoint que permite crear un directo técnico , `es necesario que se envíe el 
 {
   "name": "string",
   "lastname": "string",
-  "birthdate": "string",
+  "birth_date": "string",
   "status": "string", // Pendiente de definición
   "photo": "string base64",
   "id_country": number
@@ -1177,7 +1157,7 @@ Endpoint que permite ver o listar los directores tecnicos, es necesario enviar e
 
 - Metodo: `GET`
 - Query Params: `?id=number`
-- Prefijo: `/?id`
+- Prefijo: `/<<Query Params>>`
 
 - Salida
 
@@ -1202,7 +1182,7 @@ OK:
       "id": number,
       "name": "string",
       "lastname": "string",
-      "birthdate": "string",
+      "birth_date": "string",
       "status": "string", // Pendiente de definición
       "photo": "string base64",
       "id_country": number,
@@ -1226,7 +1206,7 @@ Endpoint que permite actualizar un director técnico, el contenido del campo pho
   "id": number,
   "name": "string",
   "lastname": "string",
-  "birthdate": "string",
+  "birth_date": "string",
   "status": "string", // Pendiente de definición
   "photo": "string base64",
   "id_country": number
@@ -1315,7 +1295,7 @@ EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
 {
     "name": "string",
     "lastname": "string",
-    "birthday": "string",
+    "birth_date": "string",
     "nationality": number,
     "position": number,
     "status": "string",  // Pendiente de definición
@@ -1352,7 +1332,7 @@ Endpoint que permite ver o listar los jugadores, es necesario enviar el query pa
 
 - Metodo: `GET`
 - Query Params: `?id=number`
-- Prefijo: `/?id`
+- Prefijo: `/<<Query Params>>`
 
 - Salida
 
@@ -1377,7 +1357,7 @@ OK:
       "id": number,
       "name": "string",
       "lastname": "string",
-      "birthday": "string",
+      "birth_date": "string",
       "nationality": number,
       "position": number,
       "status": "string",  // Pendiente de definición
@@ -1403,7 +1383,7 @@ Endpoint que permite actualizar un jugador, el contenido del campo photo debe se
   "id": number,
     "name": "string",
     "lastname": "string",
-    "birthday": "string",
+    "birth_date": "string",
     "nationality": number,
     "position": number,
     "status": "string",  // Pendiente de definición
@@ -1556,7 +1536,7 @@ Endpoint para verificación de correo al crear la cuenta de cliente. Cambiar el 
 
 - Metodo: `GET`
 - Query Params: `?id=number`
-- Prefijo: `/?id`
+- Prefijo: `/<<Query Params>>`
 - Salida
 
 ERROR:
