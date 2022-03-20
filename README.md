@@ -1836,7 +1836,7 @@ OK:
 
 ### Ver o listar Usuarios
 
-EndPoint que permite ver o listar usuarios , `es necesario que se envíe el token`.
+EndPoint que permite ver o listar usuarios, es necesario enviar el query params si se desea ver un usuario específico de lo contrario no es necesario, `es necesario que se envíe el token`.
 
 - Metodo: `GET`
 - Query Params: `?id=number`
@@ -2116,10 +2116,11 @@ OK:
 
 ### Listar paises
 
-Endpoint para listar todos los paises.
+Endpoint para listar todos los paises, es necesario enviar el query params si se desea ver un pais específico de lo contrario no es necesario.
 
 - Metodo: `Get`
-- Prefijo: `/`
+- Query Params: `?id=number`
+- Prefijo: `/<<Query Params>>`
 
 - Salida
 
@@ -2128,7 +2129,7 @@ ERROR:
 ```json
 {
   "status": 400,
-  "msg": "Error al obtener los paises.",
+  "msg": "Error al obtener (los) pais(es).",
   "data": []
 }
 ```
@@ -2138,48 +2139,13 @@ OK:
 ```json
 {
   "status": 200,
-  "msg": "Se han obtenido los paises.",
+  "msg": "Se han obtenido (los) pais(es).",
   "data": [
     {
       "id": number,
       "name": "string"
     },
     ...
-  ]
-}
-```
-
-### Obtener pais por id
-
-Endpoint para obtener un pais por id.
-
-- Metodo: `Get`
-- Query Params: ?id=number
-- Prefijo: `/?id`
-
-- Salida
-
-ERROR:
-
-```json
-{
-  "status": 400,
-  "msg": "Error al obtener el pais.",
-  "data": []
-}
-```
-
-OK:
-
-```json
-{
-  "status": 200,
-  "msg": "Pais obtenido correctamente.",
-  "data": [
-    {
-      "id": number,
-      "name": "string"
-    }
   ]
 }
 ```
