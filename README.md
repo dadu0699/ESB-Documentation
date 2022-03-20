@@ -98,6 +98,8 @@ Token
 
 ### Comprar Membresia
 
+### Dar de baja Membresia
+
 ### Agregar a favoritos un equipo
 
 ### Unirse a quiniela [Considerarse hasta la _FASE 3_]
@@ -318,7 +320,7 @@ Token
 
 ### Agregar Incidencia
 
-### Cambiar Estado Jugador/Director Técnico [¿Objetivo Principa?]
+### Cambiar Estado Jugador/Director Técnico [¿Objetivo Principal?]
 
 ## País
 
