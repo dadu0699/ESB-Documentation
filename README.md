@@ -2148,3 +2148,38 @@ OK:
   ]
 }
 ```
+
+### Obtener pais por id
+
+Endpoint para obtener un pais por id.
+
+- Metodo: `Get`
+- Query Params: ?id=number
+- Prefijo: `/?id`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener el pais.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Pais obtenido correctamente.",
+  "data": [
+    {
+      "id": number,
+      "name": "string"
+    }
+  ]
+}
+```
