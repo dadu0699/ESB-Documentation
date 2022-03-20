@@ -100,7 +100,7 @@ Token
   - M
   - U
 
-**NOTA**: Los campos de estado de cuenta, rol, edad, fecha de creación y membresia se deberán manejar a nivel de código y base de datos. El estado inicial de la cuenta es congelada, se cambiará por medio de la verificación del correo.
+**NOTA**: Los campos de estado de cuenta, rol, edad, fecha de creación y membresia se deberán manejar a nivel de código y base de datos. El estado inicial de la cuenta de un cliente es congelada, se cambiará por medio de la verificación del correo.
 
 ### Registro
 
@@ -1729,6 +1729,8 @@ OK:
   - M
   - U
 
+**NOTA**: Los campos de estado de cuenta, edad, fecha de creación se deberán manejar a nivel de código y base de datos. El estado inicial de la cuenta para los usuarios empleado y administrador debe ser activa.
+
 ### Usuarios Suscritos a X equipo
 
 ### Usuario Con o Sin Membresía
@@ -1751,9 +1753,53 @@ OK:
 
 ### Crear usuario empleado/administrador
 
+Endpoint para creación de cuentas de usuario administrador y empleado, se deberá enviar un correo electrónico con las credenciales de autenticación para el nuevo usuario creado.
+
+- Metodo: `POST`
+- Prefijo: `/user`
+- Entrada
+
+```json
+ {
+  "name": "string",
+  "lastname": "string",
+  "password": "string",
+  "email": "string",
+  "phone": "string",
+  "photo": "string base64",
+  "gender": "string",
+  "birth_date": "string",
+  "address": "string",
+  "id_country": number,
+  "id_rol": number,
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al guardar el usuario.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuario creado con éxito.",
+  "data": []
+}
+```
+
 ### Dar de alta/baja o activar/congelar un usuario
 
-Endpoint para que un administrador actualice el estado de un usuario, la eliminación se simulará por medio de un cambio de estado (Estado 3), `es necesario que se envíe el token`.
+Endpoint para que un administrador actualice el estado de la cuenta de un usuario, la eliminación se simulará por medio de un cambio de estado (Estado 3), `es necesario que se envíe el token`.
 
 - Metodo: `PUT`
 - Prefijo: `/user/status`
@@ -1816,6 +1862,7 @@ OK:
   "msg": "Usuario(s) obtenido(s) con éxito.",
   "data": [
     {
+      "id": number,
       "name": "string",
       "lastname": "string",
       "email": "string",
@@ -1825,6 +1872,8 @@ OK:
       "birth_date": "string",
       "address": "string",
       "age": number,
+      "id_rol": number,
+      "id_status": number,
       "id_country": number,
       "country": "string"
     },
