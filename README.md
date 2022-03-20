@@ -19,7 +19,7 @@
 
 ## Consideraciones Generales
 
-- Utilizar la estructura y contenido siguiente para la tabla [Paises](https://gist.github.com/adhipg/1600028)
+- Utilizar la estructura y contenido siguiente para la tabla [Paises](./script/DML_paises.sql)
 - Enviar fechas, formato `yyyy-mm-dd`
 - Todas las imagenes se envían en base64 _Cadena completa_ `data:image/png;base64,iVBORw0KGgo...`
 
@@ -465,7 +465,7 @@ OK:
 
 ### Ver o listar
 
-Endpoint que permite ver o listar los equipos, es necesario enviar el query params si se desea ver un equipo especifico de lo contrario no es necesario.
+Endpoint que permite ver o listar los equipos, es necesario enviar el query params si se desea ver un equipo específico de lo contrario no es necesario.
 
 - Metodo: `GET`
 - Query Params: `?id=number`
@@ -587,11 +587,184 @@ OK:
 
 ### Crear
 
+EndPoint que permite crear un partido, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/`
+- Estados (campo state):
+  - Iniciado = 1
+  - Finalizado = 2
+- Entrada
+
+```json
+{
+  "game_date": "string",
+  "attendees": number,
+  "result_local": number,
+  "result_visiting": number,
+  "state": number,
+  "id_stadium" : number,
+  "id_team_local" : number,
+  "id_team_visiting" : number,
+  "id_competition": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al crear partido.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Partido creado con éxito.",
+  "data": []
+}
+```
+
 ### Ver o listar
+
+Endpoint que permite ver o listar los partidos, es necesario enviar el query params si se desea ver un equipo partido de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/?id`
+- Estados (campo state):
+  - Iniciado = 1
+  - Finalizado = 2
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener partido(s).",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Partido(s) obtenido(s) con éxito.",
+  "data": [
+    {
+      "id": number,
+      "game_date": "string",
+      "attendees": number,
+      "result_local": number,
+      "result_visiting": number,
+      "state": number,
+      "id_stadium" : number,
+      "stadium": "string",
+      "id_team_local" : number,
+      "team_local": "string",
+      "id_team_visiting" : number,
+      "team_visiting": "string",
+      "id_competition": number,
+      "competition": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Actualizar
 
+Endpoint que permite actualizar un partido, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+
+- Metodo: `PUT`
+- Prefijo: `/`
+- Estados (campo state):
+  - Iniciado = 1
+  - Finalizado = 2
+- Entrada
+
+```json
+{
+  "id": number,
+  "game_date": "string",
+  "attendees": number,
+  "result_local": number,
+  "result_visiting": number,
+  "state": number,
+  "id_stadium" : number,
+  "id_team_local" : number,
+  "id_team_visiting" : number,
+  "id_competition": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al actualizar partido.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Partido actualizado con éxito.",
+  "data": []
+}
+```
+
 ### Eliminar
+
+Endpoint que permite eliminar un partido, `es necesario que se envíe el token`.
+
+- Metodo: `DELETE`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al eliminar partido.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Partido eliminado con éxito.",
+  "data": []
+}
+```
 
 ## Competencia
 
@@ -602,11 +775,181 @@ OK:
 
 ### Crear
 
+EndPoint que permite crear una competencia, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/`
+- Tipo (campo type):
+  - Liga = 1
+  - Eliminatoria = 2
+  - Copa = 3
+  - Super Copa = 4
+  - Cuadrangular = 5
+  - Triangular = 6
+- Entrada
+
+```json
+{
+  "name": "string",
+  "type": number,
+  "year": number,
+  "id_country": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al crear competencia.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Competencia creada con éxito.",
+  "data": []
+}
+```
+
 ### Ver o listar
+
+Endpoint que permite ver o listar las competencias, es necesario enviar el query params si se desea ver una competencia de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/?id`
+- Tipo (campo type):
+  - Liga = 1
+  - Eliminatoria = 2
+  - Copa = 3
+  - Super Copa = 4
+  - Cuadrangular = 5
+  - Triangular = 6
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener competencia(s).",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Competencia(s) obtenida(s) con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "type": number,
+      "year": number,
+      "id_champion_team": number,
+      "champion_team": "string",
+      "id_country": number,
+      "country": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Actualizar
 
+Endpoint que permite actualizar un partido, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+
+- Metodo: `PUT`
+- Prefijo: `/`
+- Tipo (campo type):
+  - Liga = 1
+  - Eliminatoria = 2
+  - Copa = 3
+  - Super Copa = 4
+  - Cuadrangular = 5
+  - Triangular = 6
+- Entrada
+
+```json
+{
+  "id": number,
+  "name": "string",
+  "type": number,
+  "year": number,
+  "id_champion_team": number,
+  "id_country": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al actualizar competencia.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Competencia actualizado con éxito.",
+  "data": []
+}
+```
+
 ### Eliminar
+
+Endpoint que permite eliminar una competicion, `es necesario que se envíe el token`.
+
+- Metodo: `DELETE`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al eliminar competencia.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Competencia eliminada con éxito.",
+  "data": []
+}
+```
 
 ## Estadio
 
@@ -617,11 +960,168 @@ OK:
 
 ### Crear
 
+EndPoint que permite crear un estadio, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "name": "string",
+  "fundation_date": "string",
+  "capacity": number,
+  "id_country": number,
+  "address": "string",
+  "state": "string", // Pendiente de definición
+  "photo": "string base64"
+}
+
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al crear estadio.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Estadio creado con éxito.",
+  "data": []
+}
+```
+
 ### Ver o listar
+
+Endpoint que permite ver o listar los estadios, es necesario enviar el query params si se desea ver un estadio específico de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/?id`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener estadio(s).",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Estadio(s) obtenido(s) con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "fundation_date": "string",
+      "capacity": number,
+      "id_country": number,
+      "country": "string",
+      "address": "string",
+      "state": "string", // Pendiente de definición
+      "photo": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Actualizar
 
+Endpoint que permite actualizar un estadio, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+
+- Metodo: `PUT`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number,
+  "name": "string",
+  "fundation_date": "string",
+  "capacity": number,
+  "id_country": number,
+  "address": "string",
+  "state": "string", // Pendiente de definición
+  "photo": "string base64"
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al actualizar estadio.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Equipo actualizado con estadio.",
+  "data": []
+}
+```
+
 ### Eliminar
+
+Endpoint que permite eliminar un estadio, `es necesario que se envíe el token`.
+
+- Metodo: `DELETE`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al eliminar estadio.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Estadio eliminado con éxito.",
+  "data": []
+}
+```
 
 ## Director Técnico
 
@@ -632,11 +1132,164 @@ OK:
 
 ### Crear
 
+EndPoint que permite crear un directo técnico , `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "name": "string",
+  "lastname": "string",
+  "birthdate": "string",
+  "status": "string", // Pendiente de definición
+  "photo": "string base64",
+  "id_country": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al crear directo técnico.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Directo técnico creado con éxito.",
+  "data": []
+}
+```
+
 ### Ver o listar
+
+Endpoint que permite ver o listar los directores tecnicos, es necesario enviar el query params si se desea ver un director tecnico específico de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/?id`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener director(es) tecnico(s).",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Director(es) tecnico(s) obtenido(s) con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "birthdate": "string",
+      "status": "string", // Pendiente de definición
+      "photo": "string base64",
+      "id_country": number,
+      "country": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Actualizar
 
+Endpoint que permite actualizar un director técnico, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+
+- Metodo: `PUT`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number,
+  "name": "string",
+  "lastname": "string",
+  "birthdate": "string",
+  "status": "string", // Pendiente de definición
+  "photo": "string base64",
+  "id_country": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al actualizar director técnico.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Director técnico actualizado con éxito.",
+  "data": []
+}
+```
+
 ### Eliminar
+
+Endpoint que permite eliminar un director técnico, `es necesario que se envíe el token`.
+
+- Metodo: `DELETE`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al eliminar director técnico.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Director técnico eliminado con éxito.",
+  "data": []
+}
+```
 
 ## Jugador
 
@@ -644,14 +1297,178 @@ OK:
 
 - Puerto: `5006`
 - Ruta específica: `/player/<<prefijo>>`
+- Posición (campo position):
+  - Portero = 1
+  - Defensa = 2
+  - Medio = 3
+  - Delantero = 4
 
 ### Crear
 
+EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
+
+- Metodo: `POST`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+    "name": "string",
+    "lastname": "string",
+    "birthday": "string",
+    "nationality": number,
+    "position": number,
+    "status": "string",  // Pendiente de definición
+    "id_team": number,
+    "photo": "string base64",
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al crear jugador.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugador creado con éxito.",
+  "data": []
+}
+```
+
 ### Ver o listar
+
+Endpoint que permite ver o listar los jugadores, es necesario enviar el query params si se desea ver un jugador específico de lo contrario no es necesario.
+
+- Metodo: `GET`
+- Query Params: `?id=number`
+- Prefijo: `/?id`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener jugador(s).",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugador(es) obtenido(s) con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "birthday": "string",
+      "nationality": number,
+      "position": number,
+      "status": "string",  // Pendiente de definición
+      "id_team": number,
+      "name_team" : string,
+      "photo": "string",
+    },
+    ...
+  ]
+}
+```
 
 ### Actualizar
 
+Endpoint que permite actualizar un jugador, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+
+- Metodo: `PUT`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number,
+    "name": "string",
+    "lastname": "string",
+    "birthday": "string",
+    "nationality": number,
+    "position": number,
+    "status": "string",  // Pendiente de definición
+    "id_team": number,
+    "photo": "string base64",
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al actualizar jugador.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugador actualizado con éxito.",
+  "data": []
+}
+```
+
 ### Eliminar
+
+Endpoint que permite eliminar un jugador, `es necesario que se envíe el token`.
+
+- Metodo: `DELETE`
+- Prefijo: `/`
+- Entrada
+
+```json
+{
+  "id": number
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al eliminar jugador.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugador eliminado con éxito.",
+  "data": []
+}
+```
 
 ## Noticia
 
