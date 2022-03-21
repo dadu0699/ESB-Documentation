@@ -1126,7 +1126,8 @@ EndPoint que permite crear un directo técnico , `es necesario que se envíe el 
   "birth_date": "string",
   "status": "string", // Pendiente de definición
   "photo": "string base64",
-  "id_country": number
+  "id_country": number,
+  "id_team": number
 }
 ```
 
@@ -1187,7 +1188,9 @@ OK:
       "status": "string", // Pendiente de definición
       "photo": "string base64",
       "id_country": number,
-      "country": "string"
+      "country": "string",
+      "id_team": number,
+      "team" : string
     },
     ...
   ]
@@ -1210,6 +1213,7 @@ Endpoint que permite actualizar un director técnico, el contenido del campo pho
   "birth_date": "string",
   "status": "string", // Pendiente de definición
   "photo": "string base64",
+  "id_team": number,
   "id_country": number
 }
 ```
