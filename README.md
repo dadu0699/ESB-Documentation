@@ -865,15 +865,210 @@ OK:
 
 ### Jugadores con más X incidencias en Y competición
 
+<!-- - Prefijo: `/report/12/<<Query Params>>` -->
+
 ### Jugadores con más X incidencias y Y competiciones de Z año
+
+<!-- - Prefijo: `/report/13/<<Query Params>>` -->
 
 ### Cantidad de X competiciones que ha ganado Y equipo
 
+Endpoint para obtener las competiciones que ha ganado un equipo mediante un arreglo donde se mandan los tipos de competiciones deseadas, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `POST`
+- Query Params: `?id_team=number`
+- Prefijo: `/report/14/<<Query Params>>`
+- Entrada
+
+```json
+{
+  "competitions": [
+    type_competition,
+    ...
+  ],
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener las competiciones que ha ganado x equipo.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Competencias que ha ganado x equipo obtenidas con éxito.",
+  "data": [
+    {
+      "type": "string",
+      "id_team": number,
+      "team": "string",
+      "photo": "string",
+      "count": number
+    },
+    ...
+  ]
+}
+```
+
 ### Listado de partidos en X año
+
+Endpoint para obtener el listado de partidos de un año especifico, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?year=number`
+- Prefijo: `/report/15/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener el listado de partidos de un año especifico.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Listado de partidos de un año especifico obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "game_date": "string",
+      "attendees": number,
+      "result_local": number,
+      "result_visiting": number,
+      "state": number,
+      "id_stadium" : number,
+      "stadium": "string",
+      "id_team_local" : number,
+      "team_local": "string",
+      "photo_local": "string",
+      "id_team_visiting" : number,
+      "team_visiting": "string",
+      "photo_visiting": "string",
+      "id_competition": number,
+      "competition": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Listado de partidos entre X equipo contra Y equipo
 
+Endpoint para obtener el listado de partidos de dos equipos específicos, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_team=number&id_opposing_team=number`
+- Prefijo: `/report/16/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener el listado de partidos entre x equipo y y equipo.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Listado de partidos entre x equipo y y equipo obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "game_date": "string",
+      "attendees": number,
+      "result_local": number,
+      "result_visiting": number,
+      "state": number,
+      "id_stadium" : number,
+      "stadium": "string",
+      "id_team_local" : number,
+      "team_local": "string",
+      "photo_local": "string",
+      "id_team_visiting" : number,
+      "team_visiting": "string",
+      "photo_visiting": "string",
+      "id_competition": number,
+      "competition": "string"
+    },
+    ...
+  ]
+}
+```
+
 ### Listado de partidos de X equipo
+
+Endpoint para obtener el listado de partidos de un equipo especifico, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_team=number`
+- Prefijo: `/report/17/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener el listado de partidos del equipo x.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Listado de partidos del equipo x obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "game_date": "string",
+      "attendees": number,
+      "result_local": number,
+      "result_visiting": number,
+      "state": number,
+      "id_stadium" : number,
+      "stadium": "string",
+      "id_team_local" : number,
+      "team_local": "string",
+      "photo_local": "string",
+      "id_team_visiting" : number,
+      "team_visiting": "string",
+      "photo_visiting": "string",
+      "id_competition": number,
+      "competition": "string"
+    },
+    ...
+  ]
+}
+```
 
 ## Equipo
 
@@ -1587,7 +1782,7 @@ EndPoint que permite crear un directo técnico , `es necesario que se envíe el 
   "name": "string",
   "lastname": "string",
   "birth_date": "string",
-  "status": number, 
+  "status": number,
   "photo": "string base64",
   "id_country": number
 }
@@ -1647,7 +1842,7 @@ OK:
       "name": "string",
       "lastname": "string",
       "birth_date": "string",
-      "status": number, 
+      "status": number,
       "photo": "string base64",
       "id_team": number,
       "name_team" : string,
@@ -1673,7 +1868,7 @@ Endpoint que permite actualizar un director técnico, el contenido del campo pho
   "name": "string",
   "lastname": "string",
   "birth_date": "string",
-  "status": number, 
+  "status": number,
   "photo": "string base64",
   "id_country": number
 }
@@ -1768,7 +1963,7 @@ EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
   "birth_date": "string",
   "nationality": number,
   "position": number,
-  "status": number, 
+  "status": number,
   "photo": "string base64",
 }
 ```
@@ -1829,7 +2024,7 @@ OK:
       "birth_date": "string",
       "nationality": number,
       "position": number,
-      "status": number, 
+      "status": number,
       "id_team": number,
       "name_team" : string,
       "photo": "string",
@@ -1855,7 +2050,7 @@ Endpoint que permite actualizar un jugador, el contenido del campo photo debe se
   "birth_date": "string",
   "nationality": number,
   "position": number,
-  "status": number,  
+  "status": number,
   "photo": "string base64",
 }
 ```
@@ -2268,7 +2463,7 @@ OK:
 
 Endpoint para que un administrador actualice el estado de la cuenta de un usuario, la eliminación se simulará por medio de un cambio de estado (Estado 3), `es necesario que se envíe el token`.
 
-**NOTA**:  El campo descripción se utilizará para enviar la razón por la cual el administrador decide realizar cierta acción sobre una cuenta específica.
+**NOTA**: El campo descripción se utilizará para enviar la razón por la cual el administrador decide realizar cierta acción sobre una cuenta específica.
 
 - Método: `PUT`
 - Prefijo: `/user/status`
@@ -2356,7 +2551,7 @@ OK:
 
 EndPoint que permite actualizar un usuario, si no se realizará modificación de foto o contraseña, el contenido del campo (photo/password) deberá ser un string vacío. `es necesario que se envíe el token`.
 
-**NOTA**:  El campo descripción se utilizará para enviar la razón por la cual el administrador decide realizar cierta acción sobre una cuenta específica.
+**NOTA**: El campo descripción se utilizará para enviar la razón por la cual el administrador decide realizar cierta acción sobre una cuenta específica.
 
 - Método: `PUT`
 - Prefijo: `/user`
