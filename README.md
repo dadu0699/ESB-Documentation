@@ -64,7 +64,6 @@ Headers:
 Token
 
 - Colocar como tiempo de expiración: 1 día [24h]
-- Colocar como salt rounds: 10
 - Colocar como secret seed: `SiSaleSA_`
 
 ```json
