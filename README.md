@@ -2395,23 +2395,186 @@ OK:
 
 ### Usuarios Suscritos a X equipo
 
+Endpoint para obtener los usuarios que contengan en sus favoritos a un equipo especifico, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_team=number`
+- Prefijo: `/report/1/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener usuarios suscritos al equipo x.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuarios suscritos al equipo x obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string"
+    },
+    ...
+  ]
+}
+```
+
 ### Usuario Con o Sin Membresía
+
+Endpoint para obtener los usuarios que poseen o no una membresía, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?membership=boolean`
+  - `player` es un booleano representado por los valores **0** y **1**
+    - 0: No posee membresía
+    - 1: Posee membresía
+- Prefijo: `/report/2/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener usuarios con o sin membresía.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuarios con o sin membresía obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Usuarios que Mas membresías han adquirido
 
+Endpoint para obtener los 10 usuarios que mas membresías han obtenido, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Prefijo: `/report/3`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener usuarios con mas membresías.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuarios con mas membresías obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "count": number
+    },
+    ...
+  ]
+}
+```
+
 ### Usuarios que más dinero han gastado
+
+Endpoint para obtener los 10 usuarios que mas dinero han gastado, para obtener esta cantidad el calculo se debe realizar mediante la cantidad de membresías compradas por el precio de las mismas, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Prefijo: `/report/4`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener usuarios con mas dinero gastado.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuarios con mas dinero gastado obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "amount": number
+    },
+    ...
+  ]
+}
+```
 
 ### Usuarios de X País
 
+<!-- - Prefijo: `/report/5/<<Query Params>>` -->
+
 ### Usuarios de X genero
+
+<!-- - Prefijo: `/report/6/<<Query Params>>` -->
 
 ### Usuarios con al menos X años de edad
 
+<!-- - Prefijo: `/report/7/<<Query Params>>` -->
+
 ### Empleados que MAS/MENOS noticias han publicado
+
+<!-- - Prefijo: `/report/8/<<Query Params>>` -->
 
 ### Empleados que MAS/MENOS noticias han publicado de X Equipo
 
+<!-- - Prefijo: `/report/9/<<Query Params>>` -->
+
 ### Bitácoras de los administradores
+
+<!-- - Prefijo: `/report/10/<<Query Params>>` -->
 
 ### Crear usuario empleado/administrador
 
