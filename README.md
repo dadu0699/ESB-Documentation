@@ -1569,6 +1569,10 @@ OK:
 
 - Puerto: `5005`
 - Ruta específica: `/technical-director/<<prefijo>>`
+- Estado (campo status):
+  - Activo = 1
+  - Retirado = 2
+  - Lesionado = 3
 
 ### Crear
 
@@ -1583,7 +1587,7 @@ EndPoint que permite crear un directo técnico , `es necesario que se envíe el 
   "name": "string",
   "lastname": "string",
   "birth_date": "string",
-  "status": "string", // Pendiente de definición
+  "status": number, 
   "photo": "string base64",
   "id_country": number
 }
@@ -1643,7 +1647,7 @@ OK:
       "name": "string",
       "lastname": "string",
       "birth_date": "string",
-      "status": "string", // Pendiente de definición
+      "status": number, 
       "photo": "string base64",
       "id_team": number,
       "name_team" : string,
@@ -1669,7 +1673,7 @@ Endpoint que permite actualizar un director técnico, el contenido del campo pho
   "name": "string",
   "lastname": "string",
   "birth_date": "string",
-  "status": "string", // Pendiente de definición
+  "status": number, 
   "photo": "string base64",
   "id_country": number
 }
@@ -1744,6 +1748,10 @@ OK:
   - Defensa = 2
   - Medio = 3
   - Delantero = 4
+- Estado (campo status):
+  - Activo = 1
+  - Retirado = 2
+  - Lesionado = 3
 
 ### Crear
 
@@ -1760,7 +1768,7 @@ EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
   "birth_date": "string",
   "nationality": number,
   "position": number,
-  "status": "string",  // Pendiente de definición
+  "status": number, 
   "photo": "string base64",
 }
 ```
@@ -1821,7 +1829,7 @@ OK:
       "birth_date": "string",
       "nationality": number,
       "position": number,
-      "status": "string",  // Pendiente de definición
+      "status": number, 
       "id_team": number,
       "name_team" : string,
       "photo": "string",
@@ -1847,7 +1855,7 @@ Endpoint que permite actualizar un jugador, el contenido del campo photo debe se
   "birth_date": "string",
   "nationality": number,
   "position": number,
-  "status": "string",  // Pendiente de definición
+  "status": number,  
   "photo": "string base64",
 }
 ```
@@ -2270,7 +2278,7 @@ Endpoint para que un administrador actualice el estado de la cuenta de un usuari
 {
   "id": number,
   "id_status": number,
-  "description": string
+  "description": "string"
 }
 ```
 
@@ -2367,7 +2375,7 @@ EndPoint que permite actualizar un usuario, si no se realizará modificación de
   "birth_date": "string",
   "address": "string",
   "id_country": number,
-  "description": string
+  "description": "string"
 }
 ```
 
@@ -2569,8 +2577,6 @@ OK:
 ```
 
 ### Agregar Incidencia
-
-### Cambiar Estado Jugador/Director Técnico [¿Objetivo Principal?]
 
 ## País
 
