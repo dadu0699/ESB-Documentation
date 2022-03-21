@@ -2260,6 +2260,8 @@ OK:
 
 Endpoint para que un administrador actualice el estado de la cuenta de un usuario, la eliminación se simulará por medio de un cambio de estado (Estado 3), `es necesario que se envíe el token`.
 
+**NOTA**:  El campo descripción se utilizará para enviar la razón por la cual el administrador decide realizar cierta acción sobre una cuenta específica.
+
 - Método: `PUT`
 - Prefijo: `/user/status`
 - Entrada
@@ -2267,7 +2269,8 @@ Endpoint para que un administrador actualice el estado de la cuenta de un usuari
 ```json
 {
   "id": number,
-  "id_status": number
+  "id_status": number,
+  "description": string
 }
 ```
 
@@ -2345,6 +2348,8 @@ OK:
 
 EndPoint que permite actualizar un usuario, si no se realizará modificación de foto o contraseña, el contenido del campo (photo/password) deberá ser un string vacío. `es necesario que se envíe el token`.
 
+**NOTA**:  El campo descripción se utilizará para enviar la razón por la cual el administrador decide realizar cierta acción sobre una cuenta específica.
+
 - Método: `PUT`
 - Prefijo: `/user`
 - Entrada
@@ -2361,7 +2366,8 @@ EndPoint que permite actualizar un usuario, si no se realizará modificación de
   "gender": "string",
   "birth_date": "string",
   "address": "string",
-  "id_country": number
+  "id_country": number,
+  "description": string
 }
 ```
 
