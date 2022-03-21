@@ -1185,6 +1185,8 @@ OK:
       "birth_date": "string",
       "status": "string", // Pendiente de definición
       "photo": "string base64",
+      "id_team": number,
+      "name_team" : string,
       "id_country": number,
       "country": "string"
     },
@@ -1299,7 +1301,6 @@ EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
   "nationality": number,
   "position": number,
   "status": "string",  // Pendiente de definición
-  "id_team": number,
   "photo": "string base64",
 }
 ```
@@ -1387,7 +1388,6 @@ Endpoint que permite actualizar un jugador, el contenido del campo photo debe se
   "nationality": number,
   "position": number,
   "status": "string",  // Pendiente de definición
-  "id_team": number,
   "photo": "string base64",
 }
 ```
