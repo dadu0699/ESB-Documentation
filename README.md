@@ -21,7 +21,7 @@
 
 - Utilizar la estructura y contenido siguiente para la tabla [Paises](./script/DML_paises.sql)
 - Enviar fechas, formato `yyyy-mm-dd`
-- Todas las imagenes se envían en base64 _Cadena completa_ `data:image/png;base64,iVBORw0KGgo...`
+- Todas las imágenes se envían en base64 _Cadena completa_ `data:image/png;base64,iVBORw0KGgo...`
 
 ### Estructura de Endpoint
 
@@ -108,13 +108,13 @@ Token
   - M
   - U
 
-**NOTA**: Los campos de estado de cuenta, rol, edad, fecha de creación y membresia se deberán manejar a nivel de código y base de datos. El estado inicial de la cuenta de un cliente es congelada, se cambiará por medio de la verificación del correo.
+**NOTA**: Los campos de estado de cuenta, rol, edad, fecha de creación y membresía se deberán manejar a nivel de código y base de datos. El estado inicial de la cuenta de un cliente es congelada, se cambiará por medio de la verificación del correo.
 
 ### Registro
 
 Endpoint para creación de cuentas de usuario cliente, considerar envío de correo de verificación con la ruta definida en el microservicio de autenticación. [verificación de correo](#validar-cuenta)
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/register`
 - Entrada
 
@@ -159,7 +159,7 @@ OK:
 
 Endpoint para que un usuario elimine su cuenta, la eliminación se simulará por medio de un cambio de estado (Estado 3), `es necesario que se envíe el token`.
 
-- Metodo: `DELETE`
+- Método: `DELETE`
 - Prefijo: `/`
 - Entrada
 
@@ -195,7 +195,7 @@ OK:
 
 EndPoint que permite visualizar su perfil, `es necesario que se envíe el token`.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 
@@ -237,7 +237,7 @@ OK:
 
 EndPoint que permite actualizar su perfil, si no se realizará modificación de foto o contraseña, el contenido del campo (photo/password) deberá ser un string vacío. `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/`
 - Entrada
 
@@ -279,11 +279,11 @@ OK:
 }
 ```
 
-### Comprar Membresia
+### Comprar Membresía
 
 Endpoint para que un cliente compre una membresía, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/membership`
 - Entrada
 
@@ -310,16 +310,16 @@ OK:
 ```json
 {
   "status": 200,
-  "msg": "Membresia comprada con éxito.",
+  "msg": "Membresía comprada con éxito.",
   "data": []
 }
 ```
 
-### Dar de baja Membresia
+### Dar de baja Membresía
 
 Endpoint para que un cliente cancele su membresía, `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/membership`
 - Entrada
 
@@ -346,7 +346,7 @@ OK:
 ```json
 {
   "status": 200,
-  "msg": "Membresia cancelada con éxito.",
+  "msg": "Membresía cancelada con éxito.",
   "data": []
 }
 ```
@@ -355,7 +355,7 @@ OK:
 
 Endpoint para agregar a favoritos un equipo específico, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/follow`
 - Entrada
 
@@ -392,9 +392,9 @@ OK:
 
 ### Jugadores o Técnico de X equipo
 
-Endpoint para obtener los jugadores o técnico de un equipo específico, es necesario enviar los query params, si el resultado a obtener es un tecnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
+Endpoint para obtener los jugadores o técnico de un equipo específico, es necesario enviar los query params, si el resultado a obtener es un técnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id_team=number&player=boolean`
   - `id_team` es el numero de ID del equipo a buscar
   - `player` es un booleano representado por los valores **0** y **1**
@@ -436,9 +436,9 @@ OK:
 
 ### Jugadores o Técnicos mayores a X años
 
-Endpoint para obtener los jugadores o técnicos mayores a una edad especifica, es necesario enviar los query params, si el resultado a obtener es un tecnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
+Endpoint para obtener los jugadores o técnicos mayores a una edad especifica, es necesario enviar los query params, si el resultado a obtener es un técnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?age=number&player=boolean`
   - `age` es el numero de años a buscar sin incluir
   - `player` es un booleano representado por los valores **0** y **1**
@@ -483,7 +483,7 @@ OK:
 
 Endpoint para obtener los jugadores o técnicos mayores a una edad especifica, es necesario enviar los query params, si el resultado a obtener es un tecnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?age=number&player=boolean`
   - `age` es el numero de años a buscar sin incluir
   - `player` es un booleano representado por los valores **0** y **1**
@@ -563,7 +563,7 @@ OK:
 
 EndPoint que permite crear un equipo, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/`
 - Entrada
 
@@ -602,7 +602,7 @@ OK:
 
 Endpoint que permite ver o listar los equipos, es necesario enviar el query params si se desea ver un equipo específico de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 
@@ -639,9 +639,9 @@ OK:
 
 ### Actualizar
 
-Endpoint que permite actualizar un equipo, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+Endpoint que permite actualizar un equipo, el contenido del campo photo debe ser un string vacío si la foto no se va a modificar, `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/`
 - Entrada
 
@@ -681,7 +681,7 @@ OK:
 
 Endpoint que permite eliminar un equipo, `es necesario que se envíe el token`.
 
-- Metodo: `DELETE`
+- Método: `DELETE`
 - Prefijo: `/`
 - Entrada
 
@@ -729,7 +729,7 @@ OK:
 
 EndPoint que permite crear un partido, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/`
 - Entrada
 
@@ -773,7 +773,7 @@ OK:
 
 Endpoint que permite ver o listar los partidos, es necesario enviar el query params si se desea ver un equipo partido de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 - Salida
@@ -818,9 +818,9 @@ OK:
 
 ### Actualizar
 
-Endpoint que permite actualizar un partido, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+Endpoint que permite actualizar un partido, el contenido del campo photo debe ser un string vacío si la foto no se va a modificar, `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/`
 - Entrada
 
@@ -865,7 +865,7 @@ OK:
 
 Endpoint que permite eliminar un partido, `es necesario que se envíe el token`.
 
-- Metodo: `DELETE`
+- Método: `DELETE`
 - Prefijo: `/`
 - Entrada
 
@@ -915,7 +915,7 @@ OK:
 
 EndPoint que permite crear una competencia, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/`
 - Entrada
 
@@ -954,7 +954,7 @@ OK:
 
 Endpoint que permite ver o listar las competencias, es necesario enviar el query params si se desea ver una competencia de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 - Salida
@@ -993,9 +993,9 @@ OK:
 
 ### Actualizar
 
-Endpoint que permite actualizar un partido, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+Endpoint que permite actualizar un partido, el contenido del campo photo debe ser un string vacío si la foto no se va a modificar, `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/`
 - Entrada
 
@@ -1034,9 +1034,9 @@ OK:
 
 ### Eliminar
 
-Endpoint que permite eliminar una competicion, `es necesario que se envíe el token`.
+Endpoint que permite eliminar una competición, `es necesario que se envíe el token`.
 
-- Metodo: `DELETE`
+- Método: `DELETE`
 - Prefijo: `/`
 - Entrada
 
@@ -1079,7 +1079,7 @@ OK:
 
 EndPoint que permite crear un estadio, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/`
 - Entrada
 
@@ -1122,7 +1122,7 @@ OK:
 
 Endpoint que permite ver o listar los estadios, es necesario enviar el query params si se desea ver un estadio específico de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 
@@ -1163,9 +1163,9 @@ OK:
 
 ### Actualizar
 
-Endpoint que permite actualizar un estadio, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+Endpoint que permite actualizar un estadio, el contenido del campo photo debe ser un string vacío si la foto no se va a modificar, `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/`
 - Entrada
 
@@ -1208,7 +1208,7 @@ OK:
 
 Endpoint que permite eliminar un estadio, `es necesario que se envíe el token`.
 
-- Metodo: `DELETE`
+- Método: `DELETE`
 - Prefijo: `/`
 - Entrada
 
@@ -1251,7 +1251,7 @@ OK:
 
 EndPoint que permite crear un directo técnico , `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/`
 - Entrada
 
@@ -1292,7 +1292,7 @@ OK:
 
 Endpoint que permite ver o listar los directores técnicos, es necesario enviar el query params si se desea ver un director técnico específico de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 
@@ -1303,7 +1303,7 @@ ERROR:
 ```json
 {
   "status": 400,
-  "msg": "Error al obtener director(es) tecnico(s).",
+  "msg": "Error al obtener director(es) técnico(s).",
   "data": []
 }
 ```
@@ -1313,7 +1313,7 @@ OK:
 ```json
 {
   "status": 200,
-  "msg": "Director(es) tecnico(s) obtenido(s) con éxito.",
+  "msg": "Director(es) técnico(s) obtenido(s) con éxito.",
   "data": [
     {
       "id": number,
@@ -1334,9 +1334,9 @@ OK:
 
 ### Actualizar
 
-Endpoint que permite actualizar un director técnico, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+Endpoint que permite actualizar un director técnico, el contenido del campo photo debe ser un string vacío si la foto no se va a modificar, `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/`
 - Entrada
 
@@ -1378,7 +1378,7 @@ OK:
 
 Endpoint que permite eliminar un director técnico, `es necesario que se envíe el token`.
 
-- Metodo: `DELETE`
+- Método: `DELETE`
 - Prefijo: `/`
 - Entrada
 
@@ -1426,7 +1426,7 @@ OK:
 
 EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/`
 - Entrada
 
@@ -1468,7 +1468,7 @@ OK:
 
 Endpoint que permite ver o listar los jugadores, es necesario enviar el query params si se desea ver un jugador específico de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 
@@ -1510,9 +1510,9 @@ OK:
 
 ### Actualizar
 
-Endpoint que permite actualizar un jugador, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+Endpoint que permite actualizar un jugador, el contenido del campo photo debe ser un string vacío si la foto no se va a modificar, `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/`
 - Entrada
 
@@ -1555,7 +1555,7 @@ OK:
 
 Endpoint que permite eliminar un jugador, `es necesario que se envíe el token`.
 
-- Metodo: `DELETE`
+- Método: `DELETE`
 - Prefijo: `/`
 - Entrada
 
@@ -1598,7 +1598,7 @@ OK:
 
 EndPoint que permite crear un post/noticia, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/`
 - Entrada
 
@@ -1638,7 +1638,7 @@ OK:
 
 Endpoint que permite ver o listar los post/noticias, es necesario enviar el query params `id` si se desea ver una noticia específica de lo contrario no es necesario, es necesario enviar el query params `team` si se desea ver las noticias relacionadas a un equipo de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`, `?team=number`
 - Prefijo: `/<<Query Params>>`
 
@@ -1698,9 +1698,9 @@ OK:
 
 ### Login
 
-Endopoint para el inicio de sesion de todos los usuarios, generar token segun especificaciones descritas.
+Endpoint para el inicio de sesión de todos los usuarios, generar token según especificaciones descritas.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/`
 - Roles (campo id_rol):
   - Administrador = 1
@@ -1748,7 +1748,7 @@ OK:
 
 Endpoint para verificación de correo al crear la cuenta de cliente. Cambiar el estado de la cuenta de congelada a activa para poder iniciar sesión.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 - Salida
@@ -1777,7 +1777,7 @@ OK:
 
 Endpoint para enviar el correo electrónico con la contraseña que debemos generar en el sistema y el link que redirige al login, por la solicitud de un cliente que no puede acceder al sistema.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/temporal-password`
 - Entrada
 
@@ -1813,7 +1813,7 @@ OK:
 
 Endpoint para que después de haber ingresado en el link que se envió en el correo. Al momento que el usuario cambia su contraseña. El cambio de contraseña es obligatorio.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/reset-password`
 - Entrada
 
@@ -1891,7 +1891,7 @@ OK:
 
 Endpoint para creación de cuentas de usuario administrador y empleado, se deberá enviar un correo electrónico con las credenciales de autenticación para el nuevo usuario creado.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/user`
 - Entrada
 
@@ -1937,7 +1937,7 @@ OK:
 
 Endpoint para que un administrador actualice el estado de la cuenta de un usuario, la eliminación se simulará por medio de un cambio de estado (Estado 3), `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/user/status`
 - Entrada
 
@@ -1974,7 +1974,7 @@ OK:
 
 EndPoint que permite ver o listar usuarios, es necesario enviar el query params si se desea ver un usuario específico de lo contrario no es necesario, `es necesario que se envíe el token`.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/user/<<Query Params>>`
 
@@ -2022,7 +2022,7 @@ OK:
 
 EndPoint que permite actualizar un usuario, si no se realizará modificación de foto o contraseña, el contenido del campo (photo/password) deberá ser un string vacío. `es necesario que se envíe el token`.
 
-- Metodo: `PUT`
+- Método: `PUT`
 - Prefijo: `/user`
 - Entrada
 
@@ -2075,7 +2075,7 @@ OK:
 
 Endpoint para que un empleado transfiera un jugador a otro equipo, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/player-transfer`
 - Entrada
 
@@ -2113,9 +2113,9 @@ OK:
 
 ### Log de Transferencia Jugador
 
-Endpoint que permite ver o listar el registro de tranferencias de los jugadores, es necesario enviar el query params si se desea ver el log de transferencias de un jugador específico de lo contrario no es necesario.
+Endpoint que permite ver o listar el registro de transferencias de los jugadores, es necesario enviar el query params si se desea ver el log de transferencias de un jugador específico de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/player-transfer/<<Query Params>>`
 
@@ -2159,7 +2159,7 @@ OK:
 
 Endpoint para que un empleado transfiera un director técnico a otro equipo, `es necesario que se envíe el token`.
 
-- Metodo: `POST`
+- Método: `POST`
 - Prefijo: `/technical-director-transfer`
 - Entrada
 
@@ -2197,9 +2197,9 @@ OK:
 
 ### Log de Transferencia Director Técnico
 
-Endpoint que permite ver o listar el registro de tranferencias de los directores técnicos, es necesario enviar el query params si se desea ver el log de transferencias de un director técnico específico de lo contrario no es necesario.
+Endpoint que permite ver o listar el registro de transferencias de los directores técnicos, es necesario enviar el query params si se desea ver el log de transferencias de un director técnico específico de lo contrario no es necesario.
 
-- Metodo: `GET`
+- Método: `GET`
 - Query Params: `?id=number`
 - Prefijo: `/technical-director-transfer/<<Query Params>>`
 
@@ -2250,11 +2250,11 @@ OK:
 - Puerto: `5013`
 - Ruta específica: `/country/<<prefijo>>`
 
-### Listar paises
+### Listar países
 
-Endpoint para listar todos los paises, es necesario enviar el query params si se desea ver un pais específico de lo contrario no es necesario.
+Endpoint para listar todos los países, es necesario enviar el query params si se desea ver un pais específico de lo contrario no es necesario.
 
-- Metodo: `Get`
+- Método: `Get`
 - Query Params: `?id=number`
 - Prefijo: `/<<Query Params>>`
 
@@ -2265,7 +2265,7 @@ ERROR:
 ```json
 {
   "status": 400,
-  "msg": "Error al obtener (los) pais(es).",
+  "msg": "Error al obtener (los) país(es).",
   "data": []
 }
 ```
@@ -2275,7 +2275,7 @@ OK:
 ```json
 {
   "status": 200,
-  "msg": "Se han obtenido (los) pais(es).",
+  "msg": "Se han obtenido (los) país(es).",
   "data": [
     {
       "id": number,
