@@ -396,7 +396,6 @@ Endpoint para obtener los jugadores o técnico de un equipo específico, es nece
 
 - Método: `GET`
 - Query Params: `?id_team=number&player=boolean`
-  - `id_team` es el numero de ID del equipo a buscar
   - `player` es un booleano representado por los valores **0** y **1**
     - 0: Jugadores
     - 1: Técnico
@@ -481,7 +480,7 @@ OK:
 
 ### Jugadores o Técnicos menores a X años
 
-Endpoint para obtener los jugadores o técnicos mayores a una edad especifica, es necesario enviar los query params, si el resultado a obtener es un tecnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
+Endpoint para obtener los jugadores o técnicos mayores a una edad especifica, es necesario enviar los query params, si el resultado a obtener es un técnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
 
 - Método: `GET`
 - Query Params: `?age=number&player=boolean`
@@ -526,19 +525,343 @@ OK:
 
 ### Equipos que participaron en X competición
 
+Endpoint para obtener los equipos que participaron en una competición especifica, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_competition=number`
+- Prefijo: `/report/4/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los equipos que participaron en una competición.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Equipos que participaron en una competición obtenidos con éxito.",
+  "data": [
+    {
+      "id_team": number,
+      "team": "string",
+      "photo": "string",
+      "id_competition": number
+    },
+    ...
+  ]
+}
+```
+
 ### Equipos de X país
+
+Endpoint para obtener los equipos de un país especifico, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_country=number`
+- Prefijo: `/report/5/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los equipos de un país.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Equipos de un país obtenidos con éxito.",
+  "data": [
+    {
+      "id_team": number,
+      "team": "string",
+      "photo": "string",
+      "id_country": number
+    },
+    ...
+  ]
+}
+```
 
 ### Equipos con X años de antigüedad
 
+Endpoint para obtener los equipos con cierto tiempo de antigüedad, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?age=number`
+  - `age` es el numero de años exactos a buscar
+- Prefijo: `/report/6/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los equipos con x años de antigüedad.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Equipos con x años de antigüedad obtenidos con éxito.",
+  "data": [
+    {
+      "id_team": number,
+      "team": "string",
+      "photo": "string",
+      "foundation_date": "string",
+      "country": "string"
+    },
+    ...
+  ]
+}
+```
+
 ### Estadios en X país
+
+Endpoint para obtener los estadios de un país especifico, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_country=number`
+- Prefijo: `/report/7/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los estadios de un país.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Estadios de un país obtenidos con éxito.",
+  "data": [
+    {
+      "id_stadium": number,
+      "stadium": "string",
+      "photo": "string",
+      "id_country": number
+    },
+    ...
+  ]
+}
+```
 
 ### Estadios con capacidad menor o igual a X
 
+Endpoint para obtener los estadios con una capacidad menor o igual a un cierto numero, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?capacity=number`
+  - `capacity` es el numero de la capacidad a buscar (inclusive)
+- Prefijo: `/report/8/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los estadios con capacidad menor o igual a x.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Estadios con capacidad menor o igual a x obtenidos con éxito.",
+  "data": [
+    {
+      "id_stadium": number,
+      "stadium": "string",
+      "photo": "string",
+      "country": "string",
+      "capacity": number
+    },
+    ...
+  ]
+}
+```
+
 ### Histórico de partidos de X equipo
+
+Endpoint para obtener el histórico de partidos de un equipo especifico, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_team=number`
+- Prefijo: `/report/9/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener el histórico de partidos del equipo x.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Histórico de partidos del equipo x obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "game_date": "string",
+      "attendees": number,
+      "result_local": number,
+      "result_visiting": number,
+      "state": number,
+      "id_stadium" : number,
+      "stadium": "string",
+      "id_team_local" : number,
+      "team_local": "string",
+      "photo_local": "string",
+      "id_team_visiting" : number,
+      "team_visiting": "string",
+      "photo_visiting": "string",
+      "id_competition": number,
+      "competition": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Equipos en los que ha estado o dirigido X técnico o jugador.
 
+Endpoint para obtener los jugadores o técnicos que han estado en un equipo especifico, es necesario enviar los query params, si el resultado a obtener es un técnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_team=number&player=boolean`
+  - `player` es un booleano representado por los valores **0** y **1**
+    - 0: Jugadores
+    - 1: Técnico
+- Prefijo: `/report/10/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los jugadores o técnicos que han estado en x equipo.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugadores o técnicos que han estado en x equipo obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "position": "string",
+      "start_date": "string",
+      "end_date": "string"
+    },
+    ...
+  ]
+}
+```
+
 ### Partidos donde hubo al menos X goles
+
+Endpoint para los partidos donde la sumatoria de los goles de visita y local es igual a una cantidad especifica, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?goals=number`
+  - `goals` es el numero de goles exactos a buscar
+- Prefijo: `/report/9/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los partidos donde hubo x cantidad de goles.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Partidos donde hubo x cantidad de goles obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "game_date": "string",
+      "attendees": number,
+      "result_local": number,
+      "result_visiting": number,
+      "state": number,
+      "id_stadium" : number,
+      "stadium": "string",
+      "id_team_local" : number,
+      "team_local": "string",
+      "photo_local": "string",
+      "id_team_visiting" : number,
+      "team_visiting": "string",
+      "photo_visiting": "string",
+      "id_competition": number,
+      "competition": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Jugadores con más X incidencias en Y competición
 
@@ -570,7 +893,7 @@ EndPoint que permite crear un equipo, `es necesario que se envíe el token`.
 ```json
 {
   "name": "string",
-  "fundation_date": "string",
+  "foundation_date": "string",
   "photo": "string base64",
   "id_country": number
 }
@@ -628,7 +951,7 @@ OK:
     {
       "id": number,
       "name": "string",
-      "fundation_date": "string",
+      "foundation_date": "string",
       "photo": "string",
       "id_country": number
     },
@@ -649,7 +972,7 @@ Endpoint que permite actualizar un equipo, el contenido del campo photo debe ser
 {
   "id": number,
   "name": "string",
-  "fundation_date": "string",
+  "foundation_date": "string",
   "photo": "string base64",
   "id_country": number
 }
@@ -1086,7 +1409,7 @@ EndPoint que permite crear un estadio, `es necesario que se envíe el token`.
 ```json
 {
   "name": "string",
-  "fundation_date": "string",
+  "foundation_date": "string",
   "capacity": number,
   "id_country": number,
   "address": "string",
@@ -1148,7 +1471,7 @@ OK:
     {
       "id": number,
       "name": "string",
-      "fundation_date": "string",
+      "foundation_date": "string",
       "capacity": number,
       "id_country": number,
       "country": "string",
@@ -1173,7 +1496,7 @@ Endpoint que permite actualizar un estadio, el contenido del campo photo debe se
 {
   "id": number,
   "name": "string",
-  "fundation_date": "string",
+  "foundation_date": "string",
   "capacity": number,
   "id_country": number,
   "address": "string",
