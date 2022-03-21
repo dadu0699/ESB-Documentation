@@ -819,7 +819,7 @@ Endpoint para los partidos donde la sumatoria de los goles de visita y local es 
 - Método: `GET`
 - Query Params: `?goals=number`
   - `goals` es el numero de goles exactos a buscar
-- Prefijo: `/report/9/<<Query Params>>`
+- Prefijo: `/report/11/<<Query Params>>`
 
 - Salida
 
