@@ -226,7 +226,7 @@ OK:
 
 ### Actualizar Perfil
 
-EndPoint que permite actualizar su perfil, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+EndPoint que permite actualizar su perfil, si no se realizará modificación de foto o contraseña, el contenido del campo (photo/password) deberá ser un string vacío. `es necesario que se envíe el token`.
 
 - Metodo: `PUT`
 - Prefijo: `/`
@@ -1883,7 +1883,7 @@ OK:
 
 ## Actualizar usuario
 
-EndPoint que permite actualizar un usuario, el contenido del campo photo debe ser un string vacio si la foto no se va a modificar, `es necesario que se envíe el token`.
+EndPoint que permite actualizar un usuario, si no se realizará modificación de foto o contraseña, el contenido del campo (photo/password) deberá ser un string vacío. `es necesario que se envíe el token`.
 
 - Metodo: `PUT`
 - Prefijo: `/user`
