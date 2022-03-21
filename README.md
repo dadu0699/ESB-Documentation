@@ -392,9 +392,137 @@ OK:
 
 ### Jugadores o Técnico de X equipo
 
-### Jugadores o Técnico mayores a X años
+Endpoint para obtener los jugadores o técnico de un equipo específico, es necesario enviar los query params, si el resultado a obtener es un tecnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
 
-### Jugadores o Técnico menores a X años
+- Metodo: `GET`
+- Query Params: `?id_team=number&player=boolean`
+  - `id_team` es el numero de ID del equipo a buscar
+  - `player` es un booleano representado por los valores **0** y **1**
+    - 0: Jugadores
+    - 1: Técnico
+- Prefijo: `/report/1/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los jugadores o técnico del equipo.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugadores o técnico del equipo obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "position": "string"
+    },
+    ...
+  ]
+}
+```
+
+### Jugadores o Técnicos mayores a X años
+
+Endpoint para obtener los jugadores o técnicos mayores a una edad especifica, es necesario enviar los query params, si el resultado a obtener es un tecnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
+
+- Metodo: `GET`
+- Query Params: `?age=number&player=boolean`
+  - `age` es el numero de años a buscar sin incluir
+  - `player` es un booleano representado por los valores **0** y **1**
+    - 0: Jugadores
+    - 1: Técnico
+- Prefijo: `/report/2/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los jugadores o técnicos mayores a x años.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugadores o técnicos mayores a x años obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "position": "string",
+      "team": "string"
+    },
+    ...
+  ]
+}
+```
+
+### Jugadores o Técnicos menores a X años
+
+Endpoint para obtener los jugadores o técnicos mayores a una edad especifica, es necesario enviar los query params, si el resultado a obtener es un tecnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
+
+- Metodo: `GET`
+- Query Params: `?age=number&player=boolean`
+  - `age` es el numero de años a buscar sin incluir
+  - `player` es un booleano representado por los valores **0** y **1**
+    - 0: Jugadores
+    - 1: Técnico
+- Prefijo: `/report/3/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los jugadores o técnicos menores a x años.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugadores o técnicos menores a x años obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "position": "string",
+      "team": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Equipos que participaron en X competición
 
