@@ -35,6 +35,15 @@
 }
 ```
 
+```js
+// Implementación a nivel código
+res.status(status_number).send({
+  status: status_number,
+  msg: "msg",
+  data: [],
+});
+```
+
 - status:
   - 200: ok
   - 400: bad request
