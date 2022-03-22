@@ -2760,15 +2760,131 @@ OK:
 
 ### Empleados que MAS/MENOS noticias han publicado
 
-<!-- - Prefijo: `/report/8/<<Query Params>>` -->
+Endpoint para obtener los empleados con mas o menos noticias publicadas, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?order=boolean`
+  - `order` es un booleano representado por los valores **0** y **1**
+    - 0: Mas noticias publicadas
+    - 1: Menos noticias publicadas
+- Prefijo: `/report/8/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener empleados con mas o menos noticias publicadas.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Empleados con mas o menos noticias publicadas, obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "count": number
+    },
+    ...
+  ]
+}
+```
 
 ### Empleados que MAS/MENOS noticias han publicado de X Equipo
 
-<!-- - Prefijo: `/report/9/<<Query Params>>` -->
+Endpoint para obtener los empleados con mas o menos noticias publicadas de un equipo especifico, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?order=boolean&id_team=number`
+  - `order` es un booleano representado por los valores **0** y **1**
+    - 0: Mas noticias publicadas
+    - 1: Menos noticias publicadas
+- Prefijo: `/report/9/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener empleados con mas o menos noticias publicadas de x equipo.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Empleados con mas o menos noticias publicadas de x equipo, obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "count": number
+    },
+    ...
+  ]
+}
+```
 
 ### Bitácoras de los administradores
 
-<!-- - Prefijo: `/report/10/<<Query Params>>` -->
+Endpoint para obtener los registros contenidos en la bitácora con el detalle de las acciones realizadas, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Prefijo: `/report/10`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener bitácora de los administradores.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Bitácora de los administradores obtenida con éxito.",
+  "data": [
+    {
+      "id": number,
+      "user_name": "string",
+      "user_lastname": "string",
+      "user_photo": "string",
+      "user_role": number,
+      "action": "string",
+      "date": "string",
+      "description": "string",
+      "database_table": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Crear usuario empleado/administrador
 
