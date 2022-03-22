@@ -2939,6 +2939,50 @@ OK:
 
 ### Agregar Incidencia
 
+Endpoint para la creación de incidencias. El campo descripción servirá para manejar los detalles que se muestran en el diagrama del enunciado. `es necesario que se envíe el token`.
+
+- Método: `POST`
+- Prefijo: `/incidence`
+- Tipo (campo id_type): 
+  - Gol = 1
+  - Autogol = 2
+  - Tarjeta = 3
+
+- Entrada
+
+```json
+{
+  "id_player": number,
+  "id_game" : number,
+  "id_type" : number,
+  "description": "string",
+  "minute": "string"
+}
+```
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al agregar incidencia.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Incidencia agregada con éxito.",
+  "data": []
+}
+```
+
+
 ## País
 
 ### Consideraciones especificas
