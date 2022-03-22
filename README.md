@@ -865,11 +865,94 @@ OK:
 
 ### Jugadores con más X incidencias en Y competición
 
-<!-- - Prefijo: `/report/12/<<Query Params>>` -->
+Endpoint para obtener los jugadores con cierta cantidad de incidencias en una competición especifica, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?incidence=number&id_competition=number&quantity=number`
+  - `incidence` es el tipo de incidencia a buscar definido en el apartado de [Incidencias](#agregar-incidencia)
+  - `quantity` es la cantidad de incidencias exactas a buscar
+- Prefijo: `/report/12/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los jugadores con x incidencias en y competición.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugadores con x incidencias en y competición obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "position": "string",
+      "team": "string",
+      "count": number
+    },
+    ...
+  ]
+}
+```
 
 ### Jugadores con más X incidencias y Y competiciones de Z año
 
-<!-- - Prefijo: `/report/13/<<Query Params>>` -->
+Endpoint para obtener los jugadores con cierta cantidad de incidencias en varias competiciones en un año exacto, es necesario enviar los query params, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?incidence=number&year=number&quantity=number`
+  - `incidence` es el tipo de incidencia a buscar definido en el apartado de [Incidencias](#agregar-incidencia)
+  - `quantity` es la cantidad de incidencias exactas a buscar
+- Prefijo: `/report/13/<<Query Params>>`
+- Entrada
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los jugadores con x incidencias en y competiciones de z año.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Jugadores con x incidencias en y competiciones de z año obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "nationality": "string",
+      "photo": "string",
+      "position": "string",
+      "team": "string",
+      "id_competition": number,
+      "competition": "string",
+      "count": number
+    },
+    ...
+  ]
+}
+```
 
 ### Cantidad de X competiciones que ha ganado Y equipo
 
@@ -1611,7 +1694,7 @@ EndPoint que permite crear un estadio, `es necesario que se envíe el token`.
   "capacity": number,
   "id_country": number,
   "address": "string",
-  "state": number, 
+  "state": number,
   "photo": "string base64"
 }
 
@@ -1674,7 +1757,7 @@ OK:
       "id_country": number,
       "country": "string",
       "address": "string",
-      "state": number, 
+      "state": number,
       "photo": "string"
     },
     ...
@@ -1698,7 +1781,7 @@ Endpoint que permite actualizar un estadio, el contenido del campo photo debe se
   "capacity": number,
   "id_country": number,
   "address": "string",
-  "state": number, 
+  "state": number,
   "photo": "string base64"
 }
 ```
@@ -2943,11 +3026,10 @@ Endpoint para la creación de incidencias. El campo descripción servirá para m
 
 - Método: `POST`
 - Prefijo: `/incidence`
-- Tipo (campo id_type): 
+- Tipo (campo id_type):
   - Gol = 1
   - Autogol = 2
   - Tarjeta = 3
-
 - Entrada
 
 ```json
@@ -2981,7 +3063,6 @@ OK:
   "data": []
 }
 ```
-
 
 ## País
 
