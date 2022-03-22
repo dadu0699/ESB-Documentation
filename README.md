@@ -2640,15 +2640,123 @@ OK:
 
 ### Usuarios de X País
 
-<!-- - Prefijo: `/report/5/<<Query Params>>` -->
+Endpoint para obtener los usuarios de un país especifico, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?id_country=number`
+- Prefijo: `/report/5/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener usuarios de x país.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuarios de x país obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "photo": "string",
+    },
+    ...
+  ]
+}
+```
 
 ### Usuarios de X genero
 
-<!-- - Prefijo: `/report/6/<<Query Params>>` -->
+Endpoint para obtener los usuarios de un genero especifico, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?gender=char`
+  - `gender` es el carácter del genero a buscar, este carácter fue definido en las consideraciones especificas del [administrador](#administrador)
+- Prefijo: `/report/6/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener usuarios de x genero.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuarios de x genero obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "photo": "string",
+      "nationality": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Usuarios con al menos X años de edad
 
-<!-- - Prefijo: `/report/7/<<Query Params>>` -->
+Endpoint para obtener los usuarios con una edad minima, `es necesario que se envíe el token`.
+
+- Método: `GET`
+- Query Params: `?age=number`
+  - `age` es el número de años mínimos que debe tener el usuario
+- Prefijo: `/report/7/<<Query Params>>`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener usuarios con al menos x años de edad.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Usuarios con al menos x años de edad, obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "lastname": "string",
+      "photo": "string",
+      "nationality": "string",
+      "birth_date": "string",
+      "age": "string"
+    },
+    ...
+  ]
+}
+```
 
 ### Empleados que MAS/MENOS noticias han publicado
 
