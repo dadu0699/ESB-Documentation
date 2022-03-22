@@ -1592,6 +1592,9 @@ OK:
 
 - Puerto: `5004`
 - Ruta específica: `/stadium/<<prefijo>>`
+- Estado (campo status):
+  - Disponible = 1
+  - Remodelación = 2
 
 ### Crear
 
@@ -1608,7 +1611,7 @@ EndPoint que permite crear un estadio, `es necesario que se envíe el token`.
   "capacity": number,
   "id_country": number,
   "address": "string",
-  "state": "string", // Pendiente de definición
+  "state": number, 
   "photo": "string base64"
 }
 
@@ -1671,7 +1674,7 @@ OK:
       "id_country": number,
       "country": "string",
       "address": "string",
-      "state": "string", // Pendiente de definición
+      "state": number, 
       "photo": "string"
     },
     ...
@@ -1695,7 +1698,7 @@ Endpoint que permite actualizar un estadio, el contenido del campo photo debe se
   "capacity": number,
   "id_country": number,
   "address": "string",
-  "state": "string", // Pendiente de definición
+  "state": number, 
   "photo": "string base64"
 }
 ```
