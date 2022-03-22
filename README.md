@@ -3020,7 +3020,7 @@ OK:
 }
 ```
 
-## Actualizar usuario
+### Actualizar usuario
 
 EndPoint que permite actualizar un usuario, si no se realizará modificación de foto o contraseña, el contenido del campo (photo/password) deberá ser un string vacío. `es necesario que se envíe el token`.
 
