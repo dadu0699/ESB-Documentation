@@ -2431,7 +2431,7 @@ Endpoint para que después de haber ingresado en el link que se envió en el cor
 
 ```json
 {
-  "id_client": number,
+  "email": string,
   "new_password": "string"
 }
 ```
