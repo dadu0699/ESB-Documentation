@@ -2431,7 +2431,7 @@ Endpoint para que después de haber ingresado en el link que se envió en el cor
 
 ```json
 {
-  "email": string,
+  "email": "string",
   "new_password": "string"
 }
 ```
@@ -3253,7 +3253,8 @@ Endpoint para la creación de incidencias. El campo descripción servirá para m
 - Tipo (campo id_type):
   - Gol = 1
   - Autogol = 2
-  - Tarjeta = 3
+  - Tarjeta amarilla = 3
+  - Tarjeta roja = 4
 - Entrada
 
 ```json
