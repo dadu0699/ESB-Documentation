@@ -2432,6 +2432,7 @@ Endpoint para que después de haber ingresado en el link que se envió en el cor
 ```json
 {
   "email": "string",
+  "temporal_password": "string",
   "new_password": "string"
 }
 ```
