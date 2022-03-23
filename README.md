@@ -2351,7 +2351,8 @@ OK:
   "msg": "",
   "data": {
     "token": "string",
-    "id_status": number
+    "id_status": number,
+    "id_rol": number,
   }
 }
 ```
