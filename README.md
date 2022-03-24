@@ -45,9 +45,9 @@ res.status(status_number).send({
 ```
 
 - status:
-  - 200: ok
-  - 400: bad request
-  - 401: unauthorization
+  - 200: Ok
+  - 400: Bad request
+  - 401: Unauthorized
 - data:
   - [{}]
   - [{}, {}, ...]
