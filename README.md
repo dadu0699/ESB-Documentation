@@ -48,7 +48,6 @@ res.status(status_number).send({
   - 200: ok
   - 400: bad request
   - 401: unauthorization
-  - 500: Server error or 'Error de llave foránea'
 - data:
   - [{}]
   - [{}, {}, ...]
