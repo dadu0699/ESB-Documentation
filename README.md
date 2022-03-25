@@ -1230,7 +1230,8 @@ OK:
       "name": "string",
       "foundation_date": "string",
       "photo": "string",
-      "id_country": number
+      "id_country": number,
+      "country": number,
     },
     ...
   ]
@@ -2046,7 +2047,7 @@ EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
   "name": "string",
   "lastname": "string",
   "birth_date": "string",
-  "nationality": number,
+  "id_nationality": number,
   "position": number,
   "status": number,
   "photo": "string base64",
@@ -2107,7 +2108,8 @@ OK:
       "name": "string",
       "lastname": "string",
       "birth_date": "string",
-      "nationality": number,
+      "id_nationality": number,
+      "nationality": "string",
       "position": number,
       "status": number,
       "id_team": number,
@@ -2133,7 +2135,7 @@ Endpoint que permite actualizar un jugador, el contenido del campo photo debe se
   "name": "string",
   "lastname": "string",
   "birth_date": "string",
-  "nationality": number,
+  "id_nationality": number,
   "position": number,
   "status": number,
   "photo": "string base64",
