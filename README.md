@@ -2527,7 +2527,7 @@ Endpoint para obtener los usuarios que poseen o no una membresía, es necesario 
 
 - Método: `GET`
 - Query Params: `?membership=boolean`
-  - `player` es un booleano representado por los valores **0** y **1**
+  - `membership` es un booleano representado por los valores **0** y **1**
     - 0: No posee membresía
     - 1: Posee membresía
 - Prefijo: `/report/2/<<Query Params>>`
