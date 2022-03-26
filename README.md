@@ -1419,7 +1419,7 @@ OK:
 
 ### Actualizar
 
-Endpoint que permite actualizar un partido, el contenido del campo photo debe ser un string vacío si la foto no se va a modificar, `es necesario que se envíe el token`.
+Endpoint que permite actualizar un partido, `es necesario que se envíe el token`.
 
 - Método: `PUT`
 - Prefijo: `/`
@@ -1594,7 +1594,7 @@ OK:
 
 ### Actualizar
 
-Endpoint que permite actualizar un partido, el contenido del campo photo debe ser un string vacío si la foto no se va a modificar, `es necesario que se envíe el token`.
+Endpoint que permite actualizar una competencia, `es necesario que se envíe el token`.
 
 - Método: `PUT`
 - Prefijo: `/`
