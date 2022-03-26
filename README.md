@@ -45,10 +45,9 @@ res.status(status_number).send({
 ```
 
 - status:
-  - 200: ok
-  - 400: bad request
-  - 401: unauthorization
-  - 500: Server error or 'Error de llave foránea'
+  - 200: Ok
+  - 400: Bad request
+  - 401: Unauthorized
 - data:
   - [{}]
   - [{}, {}, ...]
@@ -750,7 +749,7 @@ OK:
       "attendees": number,
       "result_local": number,
       "result_visiting": number,
-      "state": number,
+      "status": number,
       "id_stadium" : number,
       "stadium": "string",
       "id_team_local" : number,
@@ -846,7 +845,7 @@ OK:
       "attendees": number,
       "result_local": number,
       "result_visiting": number,
-      "state": number,
+      "status": number,
       "id_stadium" : number,
       "stadium": "string",
       "id_team_local" : number,
@@ -1036,7 +1035,7 @@ OK:
       "attendees": number,
       "result_local": number,
       "result_visiting": number,
-      "state": number,
+      "status": number,
       "id_stadium" : number,
       "stadium": "string",
       "id_team_local" : number,
@@ -1086,7 +1085,7 @@ OK:
       "attendees": number,
       "result_local": number,
       "result_visiting": number,
-      "state": number,
+      "status": number,
       "id_stadium" : number,
       "stadium": "string",
       "id_team_local" : number,
@@ -1136,7 +1135,7 @@ OK:
       "attendees": number,
       "result_local": number,
       "result_visiting": number,
-      "state": number,
+      "status": number,
       "id_stadium" : number,
       "stadium": "string",
       "id_team_local" : number,
@@ -1231,7 +1230,8 @@ OK:
       "name": "string",
       "foundation_date": "string",
       "photo": "string",
-      "id_country": number
+      "id_country": number,
+      "country": number,
     },
     ...
   ]
@@ -1320,7 +1320,7 @@ OK:
 
 - Puerto: `5002`
 - Ruta específica: `/match/<<prefijo>>`
-- Estados (campo state):
+- Estados (campo status):
   - Sin iniciar: 1
   - Iniciado = 2
   - Finalizado = 3
@@ -1340,7 +1340,7 @@ EndPoint que permite crear un partido, `es necesario que se envíe el token`.
   "attendees": number,
   "result_local": number,
   "result_visiting": number,
-  "state": number,
+  "status": number,
   "id_stadium" : number,
   "id_team_local" : number,
   "id_team_visiting" : number,
@@ -1402,7 +1402,7 @@ OK:
       "attendees": number,
       "result_local": number,
       "result_visiting": number,
-      "state": number,
+      "status": number,
       "id_stadium" : number,
       "stadium": "string",
       "id_team_local" : number,
@@ -1432,7 +1432,7 @@ Endpoint que permite actualizar un partido, `es necesario que se envíe el token
   "attendees": number,
   "result_local": number,
   "result_visiting": number,
-  "state": number,
+  "status": number,
   "id_stadium" : number,
   "id_team_local" : number,
   "id_team_visiting" : number,
@@ -1694,7 +1694,7 @@ EndPoint que permite crear un estadio, `es necesario que se envíe el token`.
   "capacity": number,
   "id_country": number,
   "address": "string",
-  "state": number,
+  "status": number,
   "photo": "string base64"
 }
 
@@ -1757,7 +1757,7 @@ OK:
       "id_country": number,
       "country": "string",
       "address": "string",
-      "state": number,
+      "status": number,
       "photo": "string"
     },
     ...
@@ -1781,7 +1781,7 @@ Endpoint que permite actualizar un estadio, el contenido del campo photo debe se
   "capacity": number,
   "id_country": number,
   "address": "string",
-  "state": number,
+  "status": number,
   "photo": "string base64"
 }
 ```
@@ -2047,7 +2047,7 @@ EndPoint que permite crear un jugador, `es necesario que se envíe el token`.
   "name": "string",
   "lastname": "string",
   "birth_date": "string",
-  "nationality": number,
+  "id_nationality": number,
   "position": number,
   "status": number,
   "photo": "string base64",
@@ -2108,7 +2108,8 @@ OK:
       "name": "string",
       "lastname": "string",
       "birth_date": "string",
-      "nationality": number,
+      "id_nationality": number,
+      "nationality": "string",
       "position": number,
       "status": number,
       "id_team": number,
@@ -2134,7 +2135,7 @@ Endpoint que permite actualizar un jugador, el contenido del campo photo debe se
   "name": "string",
   "lastname": "string",
   "birth_date": "string",
-  "nationality": number,
+  "id_nationality": number,
   "position": number,
   "status": number,
   "photo": "string base64",
