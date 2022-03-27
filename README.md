@@ -802,8 +802,6 @@ OK:
       "id_team": number,
       "team": "string",
       "photo": "string",
-      "start_date": "string",
-      "end_date": "string",
       "country": "string"
     },
     ...
