@@ -865,9 +865,8 @@ OK:
 Endpoint para obtener los jugadores con cierta cantidad de incidencias en una competición especifica, es necesario enviar los query params, `es necesario que se envíe el token`.
 
 - Método: `GET`
-- Query Params: `?incidence=number&id_competition=number&quantity=number`
+- Query Params: `?incidence=number&id_competition=number`
   - `incidence` es el tipo de incidencia a buscar definido en el apartado de [Incidencias](#agregar-incidencia)
-  - `quantity` es la cantidad de incidencias exactas a buscar
 - Prefijo: `/report/12/<<Query Params>>`
 
 - Salida
@@ -909,11 +908,19 @@ OK:
 Endpoint para obtener los jugadores con cierta cantidad de incidencias en varias competiciones en un año exacto, es necesario enviar los query params, `es necesario que se envíe el token`.
 
 - Método: `GET`
-- Query Params: `?incidence=number&year=number&quantity=number`
+- Query Params: `?incidence=number&year=number`
   - `incidence` es el tipo de incidencia a buscar definido en el apartado de [Incidencias](#agregar-incidencia)
-  - `quantity` es la cantidad de incidencias exactas a buscar
 - Prefijo: `/report/13/<<Query Params>>`
 - Entrada
+
+```json
+{
+  "competitions": [
+    type_competition,
+    ...
+  ],
+}
+```
 
 - Salida
 
