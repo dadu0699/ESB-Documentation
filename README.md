@@ -770,12 +770,12 @@ OK:
 
 ### Equipos en los que ha estado o dirigido X técnico o jugador.
 
-Endpoint para obtener los jugadores o técnicos que han estado en un equipo especifico, es necesario enviar los query params, si el resultado a obtener es un técnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
+Endpoint para obtener los equipos de los jugador o técnico especifico, es necesario enviar los query params, si el resultado a obtener es un técnico el campo **position** deberá ser un string vacío, `es necesario que se envíe el token`.
 
 - Método: `GET`
-- Query Params: `?id_team=number&player=boolean`
+- Query Params: `?id=number&player=boolean`
   - `player` es un booleano representado por los valores **0** y **1**
-    - 0: Jugadores
+    - 0: Jugador
     - 1: Técnico
 - Prefijo: `/report/10/<<Query Params>>`
 
@@ -786,7 +786,7 @@ ERROR:
 ```json
 {
   "status": 400,
-  "msg": "Error al obtener los jugadores o técnicos que han estado en x equipo.",
+  "msg": "Error al obtener los equipos en los que ha estado o dirigido x.",
   "data": []
 }
 ```
@@ -796,17 +796,15 @@ OK:
 ```json
 {
   "status": 200,
-  "msg": "Jugadores o técnicos que han estado en x equipo obtenidos con éxito.",
+  "msg": "Equipos en los que ha estado o dirigido x obtenidos con éxito.",
   "data": [
     {
-      "id": number,
-      "name": "string",
-      "lastname": "string",
-      "nationality": "string",
+      "id_team": number,
+      "team": "string",
       "photo": "string",
-      "position": "string",
       "start_date": "string",
-      "end_date": "string"
+      "end_date": "string",
+      "country": "string"
     },
     ...
   ]
