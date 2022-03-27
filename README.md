@@ -895,7 +895,6 @@ OK:
       "nationality": "string",
       "photo": "string",
       "position": "string",
-      "team": "string",
       "count": number
     },
     ...
@@ -948,7 +947,6 @@ OK:
       "nationality": "string",
       "photo": "string",
       "position": "string",
-      "team": "string",
       "id_competition": number,
       "competition": "string",
       "count": number
