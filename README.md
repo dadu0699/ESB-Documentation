@@ -470,7 +470,8 @@ OK:
       "nationality": "string",
       "photo": "string",
       "position": "string",
-      "team": "string"
+      "team": "string",
+      "age": number
     },
     ...
   ]
@@ -515,7 +516,8 @@ OK:
       "nationality": "string",
       "photo": "string",
       "position": "string",
-      "team": "string"
+      "team": "string",
+      "age": number
     },
     ...
   ]
