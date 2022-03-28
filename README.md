@@ -998,7 +998,8 @@ OK:
       "id_team": number,
       "team": "string",
       "photo": "string",
-      "type_competition": number,
+      "id_competition": number,
+      "competition": "string",
       "count": number
     },
     ...
