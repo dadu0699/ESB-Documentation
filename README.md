@@ -2359,6 +2359,7 @@ OK:
     "token": "string",
     "id_status": number,
     "id_rol": number,
+    "id_user": number,
   }
 }
 ```
