@@ -387,6 +387,47 @@ OK:
 }
 ```
 
+### Obtener equipos favoritos de un usuario
+
+Endpoint para obtener los equipos favoritos de un usuario especifico, `es necesario que se envíe el token`.
+
+
+- Método: `GET`
+- Query Params: `?id_client=number`
+- Prefijo: `/follow`
+
+- Salida
+
+ERROR:
+
+```json
+{
+  "status": 400,
+  "msg": "Error al obtener los equipos favoritos.",
+  "data": []
+}
+```
+
+OK:
+
+```json
+{
+  "status": 200,
+  "msg": "Favoritos obtenidos con éxito.",
+  "data": [
+    {
+      "id": number,
+      "name": "string",
+      "foundation_date": "string",
+      "photo": "string",
+      "id_country": number,
+      "country": number,
+    },
+    ...
+  ]
+}
+```
+
 ### Unirse a quiniela [Considerarse hasta la _FASE 3_]
 
 ### Jugadores o Técnico de X equipo
