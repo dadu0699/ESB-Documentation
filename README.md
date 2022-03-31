@@ -77,7 +77,8 @@ Token
 ```json
 {
   "id_user": number,
-  "id_rol": number
+  "id_rol": number,
+  "has_membership": number,
 }
 ```
 
@@ -85,6 +86,9 @@ Token
   - Administrador = 1
   - Empleado = 2
   - Cliente = 3
+- has_membership:
+  - 1: Si
+  - 0: No
 
 **NOTA:** Verificar la coincidencia y la escritura correcta de cada uno de los campos utilizados como entrada o salida.
 
@@ -390,7 +394,6 @@ OK:
 ### Obtener equipos favoritos de un usuario
 
 Endpoint para obtener los equipos favoritos de un usuario especifico, `es necesario que se envíe el token`.
-
 
 - Método: `GET`
 - Query Params: `?id_client=number`
