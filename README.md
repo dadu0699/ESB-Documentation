@@ -77,8 +77,7 @@ Token
 ```json
 {
   "id_user": number,
-  "id_rol": number,
-  "has_membership": number,
+  "id_rol": number
 }
 ```
 
@@ -86,9 +85,6 @@ Token
   - Administrador = 1
   - Empleado = 2
   - Cliente = 3
-- has_membership:
-  - 1: Si
-  - 0: No
 
 **NOTA:** Verificar la coincidencia y la escritura correcta de cada uno de los campos utilizados como entrada o salida.
 
@@ -2350,6 +2346,17 @@ OK:
 
 - Puerto: `5009`
 - Ruta específica: `/prediction/<<prefijo>>`
+- Roles (campo id_rol):
+  - Administrador = 1
+  - Empleado = 2
+  - Cliente = 3
+- Estados (campo id_status):
+  - Activa = 1
+  - Congelada = 2
+  - Eliminada = 3
+- has_membership:
+  - 1: Si
+  - 0: No
 
 ## Autenticación
 
@@ -2364,14 +2371,6 @@ Endpoint para el inicio de sesión de todos los usuarios, generar token según e
 
 - Método: `POST`
 - Prefijo: `/`
-- Roles (campo id_rol):
-  - Administrador = 1
-  - Empleado = 2
-  - Cliente = 3
-- Estados (campo id_status):
-  - Activa = 1
-  - Congelada = 2
-  - Eliminada = 3
 - Entrada
 
 ```json
@@ -2404,6 +2403,7 @@ OK:
     "id_status": number,
     "id_rol": number,
     "id_user": number,
+    "has_membership": number
   }
 }
 ```
