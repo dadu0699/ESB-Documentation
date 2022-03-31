@@ -947,7 +947,7 @@ OK:
 
 Endpoint para obtener los jugadores con cierta cantidad de incidencias en varias competiciones en un año exacto, es necesario enviar los query params, `es necesario que se envíe el token`.
 
-- Método: `GET`
+- Método: `POST`
 - Query Params: `?incidence=number&year=number`
   - `incidence` es el tipo de incidencia a buscar definido en el apartado de [Incidencias](#agregar-incidencia)
 - Prefijo: `/report/13/<<Query Params>>`
